@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { CartItem } from '../interfaces/cart-item';
 import { NgForm } from '@angular/forms';
@@ -11,7 +11,13 @@ import { NgForm } from '@angular/forms';
 export class ItemFormComponent implements OnInit {
 
   @Input() itemId: number;
-  formItem: CartItem;
+  formItem: CartItem = {
+    product: "",
+    price: 0,
+    quantity: 0
+  };
+
+  @Output() submitted = new EventEmitter<void>();
 
 
   constructor(private cartService: CartService) { }
