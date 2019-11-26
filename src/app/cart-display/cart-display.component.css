@@ -5,3 +5,7 @@ table {
 button:hover {
   cursor: pointer;
 }
+
+th{
+  padding: 0 5px;
+}

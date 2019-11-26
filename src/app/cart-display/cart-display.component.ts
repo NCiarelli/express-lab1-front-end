@@ -28,8 +28,10 @@ export class CartDisplayComponent implements OnInit {
     });
   }
 
-  deleteItem(id: number): void {
-    this.cartService.deleteItem(id).subscribe(() => this.refreshCart());
+  deleteItemById(id: number): void {
+    this.cartService.deleteItemById(id).subscribe(() => {
+      this.refreshCart();
+    });
   }
 
   editItem(id: number) {

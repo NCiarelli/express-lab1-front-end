@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { CartItem } from '../interfaces/cart-item';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-item-form',
@@ -16,7 +17,7 @@ export class ItemFormComponent implements OnInit {
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
-    if (this.itemId !== null) {
+    if (this.itemId) {
       console.log(this.itemId);
       this.cartService.getItemById(this.itemId).subscribe(data => {
         this.formItem = data;
@@ -25,6 +26,10 @@ export class ItemFormComponent implements OnInit {
     } else {
       this.formItem = { product: "", price: 0, quantity: 0 };
     }
+  }
+
+  onSubmit(formData: NgForm) {
+
   }
 
 }

@@ -1,6 +1,18 @@
 <p>item-form works!</p>
 <section class="modal">
-  <form>
-
+  <h2 *ngIf="!itemId">Add Cart Item</h2>
+  <h2 *ngIf="itemId">Edit Cart Item</h2>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <label for="product">Product
+      <input type="text" name="product" id="product" [ngModel]="formItem.product">
+    </label>
+    <label for="price">Price
+      <input type="text" name="price" id="price" [ngModel]="formItem.price">
+    </label>
+    <label for="quantity">Quantity
+      <input type="text" name="quantity" id="quantity" [ngModel]="formItem.quantity" )>
+    </label>
+    <button type="submit" *ngIf="!itemId">Add Item</button>
+    <button type="submit" *ngIf="itemId">Submit Changes</button>
   </form>
 </section>

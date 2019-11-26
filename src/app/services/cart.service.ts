@@ -13,16 +13,16 @@ export class CartService {
   constructor(private http: HttpClient) { }
 
   // Uses server at localhost:3000
-  getCart(): Observable<any> {
+  getCart(): Observable<CartItem[]> {
 
-    return this.http.get(MAIN_URL);
+    return this.http.get<CartItem[]>(MAIN_URL);
   }
 
-  getItemById(id: number): Observable<any> {
-    return this.http.get(`${MAIN_URL}/${id}`);
+  getItemById(id: number): Observable<CartItem> {
+    return this.http.get<CartItem>(`${MAIN_URL}/${id}`);
   }
 
-  deleteItem(id: number): Observable<any> {
-    return this.http.delete(`${MAIN_URL}/${id}`);
+  deleteItemById(id: number): Observable<void> {
+    return this.http.delete<void>(`${MAIN_URL}/${id}`);
   }
 }
