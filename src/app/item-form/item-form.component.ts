@@ -17,8 +17,9 @@ export class ItemFormComponent implements OnInit {
     quantity: 0
   };
 
-  @Output() submitted = new EventEmitter<void>();
+  @Output() submitted = new EventEmitter<boolean>();
 
+  cancelSubmit: boolean = false;
 
   constructor(private cartService: CartService) { }
 
@@ -36,6 +37,12 @@ export class ItemFormComponent implements OnInit {
 
   onSubmit(formData: NgForm) {
 
+    this.submitted.emit(this.cancelSubmit);
+  }
+
+  cancel() {
+    this.cancelSubmit = true;
+    this.submitted.emit(this.cancelSubmit);
   }
 
 }

@@ -14,7 +14,6 @@ export class CartService {
 
   // Uses server at localhost:3000
   getCart(): Observable<CartItem[]> {
-
     return this.http.get<CartItem[]>(MAIN_URL);
   }
 
@@ -24,5 +23,13 @@ export class CartService {
 
   deleteItemById(id: number): Observable<void> {
     return this.http.delete<void>(`${MAIN_URL}/${id}`);
+  }
+
+  addItemToCart(newItem: CartItem): Observable<CartItem> {
+    return this.http.post<CartItem>(`${MAIN_URL}`, newItem);
+  }
+
+  editItemInCartById(updatedItem: CartItem): Observable<CartItem> {
+    return this.http.put<CartItem>(`${MAIN_URL}/${updatedItem.id}`, updatedItem);
   }
 }
