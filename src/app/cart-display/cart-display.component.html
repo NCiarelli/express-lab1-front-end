@@ -21,4 +21,4 @@
   </tbody>
 </table>
 <button type="button" (click)="addNewItem()">Add Item to Cart</button>
-<app-item-form *ngIf="showForm" [itemId]="editId"></app-item-form>
+<app-item-form *ngIf="showForm" [itemId]="editId" (submitted)=onSubmitted($event)></app-item-form>

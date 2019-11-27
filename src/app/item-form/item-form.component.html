@@ -1,5 +1,5 @@
 <section class="modal">
-  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
     <h2 *ngIf="!itemId">Add Cart Item</h2>
     <h2 *ngIf="itemId">Edit Cart Item</h2>
     <label for="product">Product

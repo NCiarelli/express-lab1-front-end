@@ -26,10 +26,12 @@ export class CartService {
   }
 
   addItemToCart(newItem: CartItem): Observable<CartItem> {
+    // const options = { headers: { 'Content-Type': 'application/json' } };
     return this.http.post<CartItem>(`${MAIN_URL}`, newItem);
   }
 
   editItemInCartById(updatedItem: CartItem): Observable<CartItem> {
+    // const options = { headers: { 'Content-Type': 'application/json' } };
     return this.http.put<CartItem>(`${MAIN_URL}/${updatedItem.id}`, updatedItem);
   }
 }

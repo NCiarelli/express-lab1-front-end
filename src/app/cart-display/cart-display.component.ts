@@ -24,7 +24,7 @@ export class CartDisplayComponent implements OnInit {
   refreshCart(): void {
     this.cartService.getCart().subscribe(data => {
       this.cart = data;
-      console.log(data);
+      // console.log(data);
     });
   }
 
@@ -34,9 +34,28 @@ export class CartDisplayComponent implements OnInit {
     });
   }
 
-  editItem(id: number) {
+  editItem(id: number): void {
+    // Indicate to the form that it is an item edit by passing the item id
     this.editId = id;
+    // Display the form
     this.showForm = true;
+  }
+
+  addNewItem(): void {
+    // Indicate to the form that it is a new item by sending a null id
+    this.editId = null;
+    // Display the form
+    this.showForm = true;
+  }
+
+  onSubmitted(cancelled: boolean): void {
+    if (!cancelled) {
+      // If the form was submitted without cancelling
+      // Just refresh the cart display to get the new info
+      this.refreshCart();
+    }
+    // No matter what, remove the form
+    this.showForm = false;
   }
 
 }
