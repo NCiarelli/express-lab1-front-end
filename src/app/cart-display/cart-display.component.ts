@@ -10,6 +10,7 @@ import { CartItem } from '../interfaces/cart-item';
 export class CartDisplayComponent implements OnInit {
 
   cart: CartItem[] = [];
+  cartTotal: number = 0;
 
   // Form Variables
   showForm: boolean = false;
@@ -25,6 +26,7 @@ export class CartDisplayComponent implements OnInit {
     this.cartService.getCart().subscribe(data => {
       this.cart = data;
       // console.log(data);
+      this.getCartTotal();
     });
   }
 
@@ -56,6 +58,14 @@ export class CartDisplayComponent implements OnInit {
     }
     // No matter what, remove the form
     this.showForm = false;
+  }
+
+  getCartTotal(): number {
+    this.cartTotal = 0;
+    this.cart.forEach((item) => {
+      this.cartTotal += item.price * item.quantity;
+    });
+    return this.cartTotal;
   }
 
 }

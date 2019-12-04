@@ -20,5 +20,6 @@
     </tr>
   </tbody>
 </table>
+<p id="cart-total">Cart Total: {{cartTotal | currency}}</p>
 <button type="button" (click)="addNewItem()">Add Item to Cart</button>
 <app-item-form *ngIf="showForm" [itemId]="editId" (submitted)=onSubmitted($event)></app-item-form>

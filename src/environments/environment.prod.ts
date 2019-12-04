@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  cartApiBaseUrl: "https://shopping-cart-api-njc.herokuapp.com"
 };

@@ -9,3 +9,8 @@ button:hover {
 th{
   padding: 0 5px;
 }
+
+#cart-total {
+  font-weight: 400;
+  font-size: 2em;
+}
